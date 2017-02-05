@@ -1,0 +1,84 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    background-color:#6996D3;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.input-validation-error { border: 1px solid #f00 }
+.input-validation-valid  { /* Optional: you can set whatever style you want */ }
+.field-validation-error { color: #f00 }
+.field-validation-valid { display: none }
+.validation-summary-errors { font-weight: bold; color: #f00 }
+.validation-summary-valid { display: none }
+
+.list {
+    font-size: large;
+}
+.list-headers {
+    font-weight: 600
+}
+
+.list-container{
+    padding: 4px
+}
+
+.select-list{
+    margin-bottom:5px;
+    background-color:#FF8940;
+    border-color:blue;
+    cursor:pointer
+}
+
+.btn-containaer{
+    font-size: large;
+    padding:4px;
+    margin-bottom:8px;
+    padding-left:14px;
+    padding-bottom:20px
+}
+
+.list-date{
+    font-size:small
+}
+
+.head-container{
+    background-color:aqua;
+    height:100px
+}
+.head-container h1{
+    font-size:48px;
+    margin:15px;
+    padding:14px
+}
+
+.body-container{
+    background-color:#FFD740
+}
+
+.navbar{
+    background-color:#05316D
+}
+
+.buton{
+    background-color:#FF8940
+}

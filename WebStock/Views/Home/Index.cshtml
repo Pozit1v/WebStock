@@ -1,0 +1,106 @@
+﻿@model IEnumerable<Product>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+
+<div id="container">
+    <h1>Список товаров</h1>
+    <div class="col-xs-12 btn-containaer">
+        <button class="col-xs-2 buton" onmouseover="mouseOver(this)" onmouseout="mouseOut(this)" onclick="addProduct()">Добавить товар</button>
+    </div>
+        <div class="col-xs-12 list-container" >
+            <div class="col-xs-1"></div>
+            <div class="col-xs-7 list-headers list">Название товара</div>
+            <div class="col-xs-2 list-headers list" >Ед.Измерения</div>
+            <div class="col-xs-2 list-headers list">Цена</div>
+        </div>
+        @foreach (var item in Model)
+        {
+                <div class="col-xs-12 list-container select-list" onmouseover="mouseOver(this)" onmouseout="mouseOut(this)">
+                    <div class="col-xs-1 list"><input type="checkbox" /></div>
+                    <div id="@item.Id" onclick="editProduct(this)">
+                        <div class="col-xs-7 list">@item.ProductName</div>
+                        <div class="col-xs-2 list">@item.Unit.UnitName</div>
+                        <div class="col-xs-2 list">@item.Price</div>
+                    </div>
+                    
+                </div>
+        }
+    </div>
+<div id="dialog">
+</div>
+<script type="text/javascript">
+    function addProduct() {
+        $.ajax({
+            type: "GET",
+            url: "Home/AddProduct",
+            success: function (data) {
+                
+                $("#dialog").html(data);
+                $("#dialog").dialog({ autoOpen: false,
+                    modal: true,
+                    resizable: false,
+                height: "auto",
+                width: 600,
+                });
+                $('#dialog').dialog('open');
+                
+
+            }
+        });
+    }
+    function editProduct(data) {
+        var id = data.id;
+        $.ajax({
+            type: "GET",
+            url: "Home/EditProduct/" + id,
+            success: function (data) {
+
+                $("#dialog").html(data);
+                $("#dialog").dialog({
+                    autoOpen: false,
+                    modal: true,
+                    resizable: false,
+                    height: "auto",
+                    width: 600,
+                });
+                $('#dialog').dialog('open');
+
+
+            }
+        });
+    }
+    function deleteProduct() {
+        var id = $('#Id').attr('value');
+        $.ajax({
+            type: "GET",
+            url: "Home/DeleteProduct/" + id,
+            success: function (data) {
+
+                $("#dialog").html(data);
+                $("#dialog").dialog({
+                    autoOpen: false,
+                    modal: true,
+                    resizable: false,
+                    height: "auto",
+                    width: 600,
+                    draggable: false
+                });
+                $('#dialog').dialog('open');
+
+
+            }
+        });
+    }
+ 
+        function mouseOver(obj) {
+
+            $(obj).css({ "background-color": "#FFA873" });
+        }
+        function mouseOut(obj) {
+            $(obj).css({ "background-color": "#FF8940" });
+        }
+
+</script>
